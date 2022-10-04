@@ -28,7 +28,17 @@ public class ShowService {
                         )
                 );
 
-        return new ShowDto(found);
+        return new ShowDto(found, false);
+    }
+
+    public boolean addShow(ShowDto showDto) {
+        try {
+            Show newShow = showDto.getShowEntity(showDto);
+            showRepository.save(newShow);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
 }

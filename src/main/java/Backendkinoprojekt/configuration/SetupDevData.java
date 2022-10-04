@@ -43,8 +43,8 @@ public class SetupDevData implements ApplicationRunner {
         LocalDateTime ldt1 = LocalDateTime.of(2021, 10, 10, 10, 10);
         LocalDateTime ldt2 = LocalDateTime.of(2022, 11, 11, 11, 11);
 
-        Show s1 = new Show(t1.getId(),m1.getId(),ldt1);
-        Show s2 = new Show(t2.getId(),m2.getId(),ldt2);
+        Show s1 = new Show(t1.getId(),m1.getId(),ldt1, 100);
+        Show s2 = new Show(t2.getId(),m2.getId(),ldt2, 200);
 
         showRepository.save(s1);
         showRepository.save(s2);
