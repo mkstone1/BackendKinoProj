@@ -20,7 +20,7 @@ public class Movie {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int ID;
+    private int id;
 
     private String name;
 
@@ -30,7 +30,7 @@ public class Movie {
 
     private String actors;
 
-    private double runTime;
+    private int runTime;
 
 
 
