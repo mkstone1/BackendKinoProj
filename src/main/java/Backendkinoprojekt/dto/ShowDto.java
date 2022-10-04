@@ -17,12 +17,14 @@ public class ShowDto {
     private int theaterId;
     private int movieId;
     private LocalDateTime showTime;
+    private double price;
 
     public static Show getShowEntity(ShowDto s) {
         return new Show(
                 s.getTheaterId(),
                 s.getMovieId(),
-                s.getShowTime()
+                s.getShowTime(),
+                s.getPrice()
         );
     }
 
@@ -30,6 +32,7 @@ public class ShowDto {
         this.theaterId = s.getTheaterId();
         this.movieId = s.getMovieId();
         this.showTime = s.getShowTime();
+        this.price = s.getPrice();
         if(includeAll) {
             this.id = s.getId();
         }
@@ -39,6 +42,7 @@ public class ShowDto {
         this.theaterId = s.getTheaterId();
         this.movieId = s.getMovieId();
         this.showTime = s.getShowTime();
+        this.price = s.getPrice();
     }
 
 }

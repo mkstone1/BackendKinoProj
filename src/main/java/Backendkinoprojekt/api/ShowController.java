@@ -19,4 +19,11 @@ public class ShowController {
     public ShowDto getShow(@PathVariable int id) throws Exception {
         return showService.getShow(id);
     }
+
+    @PostMapping()
+    public boolean addShow(@RequestBody ShowDto showDto) {
+        return showService.addShow(showDto);
+    }
+
+
 }
