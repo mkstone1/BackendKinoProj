@@ -1,7 +1,9 @@
 package Backendkinoprojekt.configuration;
 
 import Backendkinoprojekt.entity.Movie;
+import Backendkinoprojekt.entity.Theater;
 import Backendkinoprojekt.repository.MovieRepository;
+import Backendkinoprojekt.repository.TheaterRepository;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Controller;
@@ -11,9 +13,11 @@ public class SetupDevData implements ApplicationRunner {
 
 
     MovieRepository movieRepository;
+    TheaterRepository theaterRepository;
 
-    public SetupDevData(MovieRepository movieRepository){
+    public SetupDevData(MovieRepository movieRepository, TheaterRepository theaterRepository){
         this.movieRepository = movieRepository;
+        this.theaterRepository = theaterRepository;
     }
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -23,7 +27,11 @@ public class SetupDevData implements ApplicationRunner {
         movieRepository.save(m1);
         movieRepository.save(m2);
 
+        Theater t1 = new Theater(20, 12);
+        Theater t2 = new Theater(25, 16);
 
+        theaterRepository.save(t1);
+        theaterRepository.save(t2);
 
 
 
