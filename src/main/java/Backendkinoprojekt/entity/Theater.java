@@ -18,9 +18,9 @@ public class Theater
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     private int rows;
-    private int seatPrRow;
+    private int seatsPrRow;
 
 
 
