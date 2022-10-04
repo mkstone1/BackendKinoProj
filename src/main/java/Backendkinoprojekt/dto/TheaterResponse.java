@@ -1,5 +1,6 @@
 package Backendkinoprojekt.dto;
 
+import Backendkinoprojekt.entity.Theater;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,5 +17,10 @@ public class TheaterResponse
     int id;
     int rows;
     int seatsPrRow;
-    
+
+    public TheaterResponse(Theater theater){
+        this.id = theater.getId();
+        this.rows = theater.getRows();
+        this.seatsPrRow = theater.getSeatsPrRow();
+    }
 }
