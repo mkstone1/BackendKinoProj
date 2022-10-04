@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class ShowService {
 
@@ -16,6 +19,13 @@ public class ShowService {
 
     public ShowService(ShowRepository showRepository) {
         this.showRepository = showRepository;
+    }
+
+    public List<ShowDto> getAllShows(){
+        return showRepository.findAll()
+                .stream()
+                .map(show -> new ShowDto(show,true))
+                .collect(Collectors.toList());
     }
 
     public ShowDto getShow(@PathVariable int id) throws Exception {
@@ -28,7 +38,7 @@ public class ShowService {
                         )
                 );
 
-        return new ShowDto(found, false);
+        return new ShowDto(found, true);
     }
 
     public boolean addShow(ShowDto showDto) {

@@ -4,6 +4,8 @@ import Backendkinoprojekt.dto.ShowDto;
 import Backendkinoprojekt.service.ShowService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("api/shows")
 @CrossOrigin
@@ -13,6 +15,11 @@ public class ShowController {
 
     public ShowController(ShowService showService) {
         this.showService = showService;
+    }
+
+    @GetMapping()
+    public List<ShowDto> getAllShows(){
+        return showService.getAllShows();
     }
 
     @GetMapping("/{id}")
