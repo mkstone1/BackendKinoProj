@@ -12,16 +12,19 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
+@Table(name="billet")
 public class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(name="rækker-nummer", nullable = false)
     private int rowNumber;
 
+    @Column(name="sædenummer", nullable = false)
     private int seatNumber;
 
-    @ManyToOne()
+    @ManyToOne(cascade = CascadeType.ALL)
     private Show show;
 
     public Ticket(int rowNumber, int seatNumber, Show show) {

@@ -14,6 +14,7 @@ import java.util.List;
 @ToString
 @NoArgsConstructor
 @EqualsAndHashCode
+@Table(name="BiografShows")
 public class Show {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +25,7 @@ public class Show {
 
     private double price;
 
-    @OneToMany(mappedBy = "show")
+    @OneToMany(mappedBy = "show", cascade = CascadeType.ALL)
     private List<Ticket> tickets = new ArrayList<>();
 
     public Show(int theaterId, int movieId, LocalDateTime showTime, double price) {
