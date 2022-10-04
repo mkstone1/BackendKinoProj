@@ -3,9 +3,11 @@ package Backendkinoprojekt.configuration;
 import Backendkinoprojekt.entity.Movie;
 import Backendkinoprojekt.entity.Show;
 import Backendkinoprojekt.entity.Theater;
+import Backendkinoprojekt.entity.Ticket;
 import Backendkinoprojekt.repository.MovieRepository;
 import Backendkinoprojekt.repository.ShowRepository;
 import Backendkinoprojekt.repository.TheaterRepository;
+import Backendkinoprojekt.repository.TicketRepository;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Controller;
@@ -18,12 +20,13 @@ public class SetupDevData implements ApplicationRunner {
 
     MovieRepository movieRepository;
     TheaterRepository theaterRepository;
-
+    TicketRepository ticketRepository;
     ShowRepository showRepository;
 
-    public SetupDevData(MovieRepository movieRepository, TheaterRepository theaterRepository, ShowRepository showRepository) {
+    public SetupDevData(MovieRepository movieRepository, TheaterRepository theaterRepository, TicketRepository ticketRepository, ShowRepository showRepository) {
         this.movieRepository = movieRepository;
         this.theaterRepository = theaterRepository;
+        this.ticketRepository = ticketRepository;
         this.showRepository = showRepository;
     }
     @Override
@@ -48,6 +51,12 @@ public class SetupDevData implements ApplicationRunner {
 
         showRepository.save(s1);
         showRepository.save(s2);
+
+        Ticket ticket1 = new Ticket(1, 1);
+        Ticket ticket2 = new Ticket(2, 3);
+
+        ticketRepository.save(ticket1);
+        ticketRepository.save(ticket2);
 
 
 

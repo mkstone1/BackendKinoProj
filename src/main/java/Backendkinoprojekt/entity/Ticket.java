@@ -23,4 +23,8 @@ public class Ticket {
     @ManyToOne()
     private Show show;
 
+    public Ticket(int rowNumber, int seatNumber) {
+        this.rowNumber = rowNumber;
+        this.seatNumber = seatNumber;
+    }
 }
