@@ -32,6 +32,11 @@ public class Movie {
 
     private int runTime;
 
-
-
+    public Movie(String name, String genre, int minAge, String actors, int runTime) {
+        this.name = name;
+        this.genre = genre;
+        this.minAge = minAge;
+        this.actors = actors;
+        this.runTime = runTime;
+    }
 }
