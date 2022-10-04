@@ -3,7 +3,6 @@ package Backendkinoprojekt.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import net.bytebuddy.dynamic.loading.InjectionClassLoader;
 
 import javax.persistence.*;
 
@@ -23,7 +22,5 @@ public class Ticket {
 
     @ManyToOne()
     private Show show;
-
-
 
 }
