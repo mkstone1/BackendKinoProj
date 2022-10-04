@@ -1,5 +1,6 @@
 package Backendkinoprojekt.entity;
 
+import Backendkinoprojekt.dto.TicketDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

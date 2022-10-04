@@ -13,6 +13,10 @@ public class TicketDto {
     private int rowNumber;
     private int seatNumber;
 
+    public Ticket getTicketEntity(TicketDto t) {
+        return new Ticket(t.getRowNumber(), t.getSeatNumber());
+    }
+
     public TicketDto(Ticket t) {
         this.id = t.getId();
         this.rowNumber = t.getRowNumber();

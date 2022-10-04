@@ -2,10 +2,7 @@ package Backendkinoprojekt.api;
 
 import Backendkinoprojekt.dto.TicketDto;
 import Backendkinoprojekt.service.TicketService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,5 +20,20 @@ public class TicketController {
     @GetMapping()
     public List<TicketDto> getAllTickets() {
         return ticketService.getAllTickets();
+    }
+
+    @GetMapping("/{ticketId}")
+    public TicketDto getTicketById(@PathVariable int ticketId) {
+        return ticketService.getTicketById(ticketId);
+    }
+
+    @PostMapping()
+    public boolean addTicket(@RequestBody TicketDto ticketDto) {
+        return ticketService.addTicket(ticketDto);
+    }
+
+    @DeleteMapping("/{ticketId}")
+    public boolean deleteTicket(@PathVariable int ticketId) {
+        return ticketService.deleteTicket(ticketId);
     }
 }
