@@ -11,7 +11,6 @@ import javax.persistence.Id;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @ToString
 @EqualsAndHashCode
 public class Theater
@@ -22,6 +21,9 @@ public class Theater
     private int rows;
     private int seatsPrRow;
 
-
-
+    public Theater(int rows, int seatsPrRow)
+    {
+        this.rows = rows;
+        this.seatsPrRow = seatsPrRow;
+    }
 }
