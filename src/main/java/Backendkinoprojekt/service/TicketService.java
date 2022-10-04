@@ -1,7 +1,9 @@
 package Backendkinoprojekt.service;
 
 import Backendkinoprojekt.dto.TicketDto;
+import Backendkinoprojekt.entity.Show;
 import Backendkinoprojekt.entity.Ticket;
+import Backendkinoprojekt.repository.ShowRepository;
 import Backendkinoprojekt.repository.TicketRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -14,9 +16,11 @@ import java.util.stream.Collectors;
 public class TicketService {
 
     TicketRepository ticketRepository;
+    ShowRepository showRepository;
 
-    public TicketService(TicketRepository ticketRepository) {
+    public TicketService(TicketRepository ticketRepository, ShowRepository showRepository) {
         this.ticketRepository = ticketRepository;
+        this.showRepository = showRepository;
     }
 
     public List<TicketDto> getAllTickets() {
@@ -30,7 +34,8 @@ public class TicketService {
 
     public boolean addTicket(TicketDto ticketDto) {
         try {
-            Ticket ticketToBeAdded = ticketDto.getTicketEntity(ticketDto);
+            Show showForTicket = showRepository.findById(ticketDto.getShowId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Show not found"));
+            Ticket ticketToBeAdded = ticketDto.getTicketEntity(ticketDto, showForTicket);
             ticketRepository.save(ticketToBeAdded);
             return true;
         } catch (Exception e) {
