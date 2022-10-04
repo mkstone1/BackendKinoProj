@@ -32,5 +32,10 @@ public class ShowController {
         return showService.addShow(showDto);
     }
 
+    @PutMapping("/{showId}")
+    public boolean editShow(@PathVariable int showId, @RequestBody ShowDto showDto) throws Exception {
+        return showService.editShow(showId, showDto);
+    }
+
 
 }

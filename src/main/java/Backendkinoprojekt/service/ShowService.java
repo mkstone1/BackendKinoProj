@@ -6,6 +6,7 @@ import Backendkinoprojekt.repository.ShowRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
@@ -47,6 +48,21 @@ public class ShowService {
             showRepository.save(newShow);
             return true;
         } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean editShow(int showId, ShowDto showDto){
+        try{
+            Show showFound = showRepository.findById(showId)
+                    .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Show not found"));
+            showFound.setTheaterId(showDto.getTheaterId());
+            showFound.setMovieId(showDto.getMovieId());
+            showFound.setShowTime(showDto.getShowTime());
+            showFound.setPrice(showDto.getPrice());
+            showRepository.save(showFound);
+            return true;
+        }catch(Exception e){
             return false;
         }
     }
