@@ -19,8 +19,8 @@ public class MovieService {
         this.movieRepository = movieRepository;
     }
 
-    public MovieDto getMovieById(int id){
-        Movie foundMovie = movieRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Movie not found"));
+    public MovieDto getMovieById(int movieId){
+        Movie foundMovie = movieRepository.findById(movieId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Movie not found"));
         return new MovieDto(foundMovie, true);
     }
 
@@ -47,5 +47,21 @@ public class MovieService {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    public boolean editMovie(int movieId, MovieDto movieDto) {
+        try {
+            Movie movieFound = movieRepository.findById(movieId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Movie not found"));
+            movieFound.setName(movieDto.getName());
+            movieFound.setGenre(movieDto.getGenre());
+            movieFound.setMinAge(movieDto.getMinAge());
+            movieFound.setActors(movieDto.getActors());
+            movieFound.setRunTime(movieDto.getRunTime());
+            movieRepository.save(movieFound);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+
     }
 }

@@ -37,4 +37,8 @@ public class MovieController {
         return movieService.deleteMovie(movieId);
     }
 
+    @PutMapping("/{movieId}")
+    boolean editMovie(@PathVariable int movieId ,@RequestBody MovieDto movieDto) {
+        return movieService.editMovie(movieId,movieDto);
+    }
 }
