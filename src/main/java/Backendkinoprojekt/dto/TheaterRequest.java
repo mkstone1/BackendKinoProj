@@ -20,7 +20,6 @@ public class TheaterRequest
 
     public static Theater getTheaterEntity(TheaterRequest theaterRequest){
         return new Theater(
-                theaterRequest.getId(),
                 theaterRequest.getRows(),
                 theaterRequest.getSeatsPrRow()
         );

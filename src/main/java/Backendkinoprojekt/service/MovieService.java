@@ -38,4 +38,14 @@ public class MovieService {
            return false;
        }
     }
+
+    public boolean deleteMovie(int id) {
+        try {
+            Movie movieFound = movieRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Movie not found"));
+            movieRepository.delete(movieFound);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }

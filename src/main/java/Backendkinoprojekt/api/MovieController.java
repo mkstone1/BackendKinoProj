@@ -32,4 +32,9 @@ public class MovieController {
         return movieService.addMovie(movieDto);
     }
 
+    @DeleteMapping("/{movieId}")
+    boolean deleteMovie(@PathVariable int movieId) {
+        return movieService.deleteMovie(movieId);
+    }
+
 }
