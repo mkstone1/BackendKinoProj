@@ -1,6 +1,6 @@
 package Backendkinoprojekt.dto;
 
-import Backendkinoprojekt.entity.Show;
+import Backendkinoprojekt.entity.Screening;
 import Backendkinoprojekt.entity.Ticket;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,7 +15,7 @@ public class TicketDto {
     private int seatNumber;
     private int showId;
 
-    public Ticket getTicketEntity(TicketDto t, Show show) {
+    public Ticket getTicketEntity(TicketDto t, Screening show) {
         return new Ticket(t.getRowNumber(), t.getSeatNumber(), show);
     }
 
@@ -24,7 +24,7 @@ public class TicketDto {
         this.id = t.getId();
         this.rowNumber = t.getRowNumber();
         this.seatNumber = t.getSeatNumber();
-        this.showId = t.getShow().getId();
+        this.showId = t.getScreening().getId();
     }
 
 }

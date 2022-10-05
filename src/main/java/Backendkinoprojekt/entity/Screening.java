@@ -14,23 +14,25 @@ import java.util.List;
 @ToString
 @NoArgsConstructor
 @EqualsAndHashCode
-public class Show {
+public class Screening {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     private int theaterId;
     private int movieId;
-    private LocalDateTime showTime;
+    private LocalDateTime screeningStartTime;
 
     private double price;
 
-    @OneToMany(mappedBy = "show")
+    @OneToMany(mappedBy = "screening", cascade = CascadeType.MERGE)
+    @Column(name = "screening_id")
     private List<Ticket> tickets = new ArrayList<>();
 
-    public Show(int theaterId, int movieId, LocalDateTime showTime, double price) {
+    public Screening(int theaterId, int movieId, LocalDateTime screeningStartTime, double price) {
         this.theaterId = theaterId;
         this.movieId = movieId;
-        this.showTime = showTime;
+        this.screeningStartTime = screeningStartTime;
         this.price = price;
     }
 

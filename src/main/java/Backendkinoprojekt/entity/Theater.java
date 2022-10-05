@@ -2,10 +2,7 @@ package Backendkinoprojekt.entity;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -18,7 +15,11 @@ public class Theater
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(name = "theater_rows")
     private int rows;
+
+    @Column(name = "theater_seats")
     private int seatsPrRow;
 
     public Theater(int rows, int seatsPrRow)

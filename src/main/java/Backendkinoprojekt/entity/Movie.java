@@ -5,11 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
+import javax.persistence.*;
 
 
 @Getter
@@ -22,14 +18,19 @@ public class Movie {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(name = "movie_name")
     private String name;
 
+    @Column(name = "movie_genre")
     private String genre;
 
+    @Column(name = "movie_age")
     private int minAge;
 
+    @Column(name = "movie_actors")
     private String actors;
 
+    @Column(name = "movie_runtime")
     private int runTime;
 
     public Movie(String name, String genre, int minAge, String actors, int runTime) {

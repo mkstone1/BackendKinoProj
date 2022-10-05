@@ -1,6 +1,6 @@
 package Backendkinoprojekt.dto;
 
-import Backendkinoprojekt.entity.Show;
+import Backendkinoprojekt.entity.Screening;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,36 +12,36 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ShowDto {
+public class ScreeningDto {
     private int id;
     private int theaterId;
     private int movieId;
-    private LocalDateTime showTime;
+    private LocalDateTime screeningStartTime;
     private double price;
 
-    public static Show getShowEntity(ShowDto s) {
-        return new Show(
+    public static Screening getScreeningEntity(ScreeningDto s) {
+        return new Screening(
                 s.getTheaterId(),
                 s.getMovieId(),
-                s.getShowTime(),
+                s.getScreeningStartTime(),
                 s.getPrice()
         );
     }
 
-    public ShowDto(Show s, boolean includeAll) {
+    public ScreeningDto(Screening s, boolean includeAll) {
         this.theaterId = s.getTheaterId();
         this.movieId = s.getMovieId();
-        this.showTime = s.getShowTime();
+        this.screeningStartTime = s.getScreeningStartTime();
         this.price = s.getPrice();
         if(includeAll) {
             this.id = s.getId();
         }
     }
 
-    public ShowDto(Show s){
+    public ScreeningDto(Screening s){
         this.theaterId = s.getTheaterId();
         this.movieId = s.getMovieId();
-        this.showTime = s.getShowTime();
+        this.screeningStartTime = s.getScreeningStartTime();
         this.price = s.getPrice();
     }
 

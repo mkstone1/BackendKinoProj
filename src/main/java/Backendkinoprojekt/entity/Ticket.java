@@ -1,6 +1,5 @@
 package Backendkinoprojekt.entity;
 
-import Backendkinoprojekt.dto.TicketDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,16 +16,19 @@ public class Ticket {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(name = "theater_row")
     private int rowNumber;
 
+    @Column(name = "theater_seat")
     private int seatNumber;
 
-    @ManyToOne()
-    private Show show;
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "screening_id")
+    private Screening screening;
 
-    public Ticket(int rowNumber, int seatNumber, Show show) {
+    public Ticket(int rowNumber, int seatNumber, Screening screening) {
         this.rowNumber = rowNumber;
         this.seatNumber = seatNumber;
-        this.show = show;
+        this.screening = screening;
     }
 }
