@@ -48,9 +48,11 @@ public class SetupDevData implements ApplicationRunner {
 
         Screening s1 = new Screening(t1.getId(),m1.getId(),ldt1, 100);
         Screening s2 = new Screening(t2.getId(),m2.getId(),ldt2, 200);
+        Screening s3 = new Screening(t1.getId(),m1.getId(),ldt1, 100);
 
         screeningRepository.save(s1);
         screeningRepository.save(s2);
+        screeningRepository.save(s3);
 
         Ticket ticket1 = new Ticket(1, 1, s1);
         Ticket ticket2 = new Ticket(2, 3, s2);
