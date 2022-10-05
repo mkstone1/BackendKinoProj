@@ -34,8 +34,8 @@ public class TicketService {
 
     public boolean addTicket(TicketDto ticketDto) {
         try {
-            Screening showForTicket = screeningRepository.findById(ticketDto.getShowId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Show not found"));
-            Ticket ticketToBeAdded = ticketDto.getTicketEntity(ticketDto, showForTicket);
+            Screening screeningForTicket = screeningRepository.findById(ticketDto.getShowId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Show not found"));
+            Ticket ticketToBeAdded = ticketDto.getTicketEntity(ticketDto, screeningForTicket);
             ticketRepository.save(ticketToBeAdded);
             return true;
         } catch (Exception e) {
