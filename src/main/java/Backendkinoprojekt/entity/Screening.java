@@ -20,7 +20,9 @@ public class Screening {
     private int id;
     @ManyToOne
     private Theater theater;
-    private int movieId;
+
+    @ManyToOne
+    private Movie movie;
     private LocalDateTime screeningStartTime;
 
     private double price;
@@ -29,9 +31,9 @@ public class Screening {
     @Column(name = "screening_id")
     private List<Ticket> tickets = new ArrayList<>();
 
-    public Screening(Theater theater, int movieId, LocalDateTime screeningStartTime, double price) {
+    public Screening(Theater theater, Movie movieId, LocalDateTime screeningStartTime, double price) {
         this.theater = theater;
-        this.movieId = movieId;
+        this.movie = movieId;
         this.screeningStartTime = screeningStartTime;
         this.price = price;
     }

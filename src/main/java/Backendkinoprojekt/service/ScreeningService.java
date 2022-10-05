@@ -1,8 +1,10 @@
 package Backendkinoprojekt.service;
 
 import Backendkinoprojekt.dto.ScreeningDto;
+import Backendkinoprojekt.entity.Movie;
 import Backendkinoprojekt.entity.Screening;
 import Backendkinoprojekt.entity.Theater;
+import Backendkinoprojekt.repository.MovieRepository;
 import Backendkinoprojekt.repository.ScreeningRepository;
 import Backendkinoprojekt.repository.TheaterRepository;
 import org.springframework.http.HttpStatus;
@@ -19,10 +21,13 @@ public class ScreeningService {
     private final ScreeningRepository screeningRepository;
     private final TheaterRepository theaterRepository;
 
+    private final MovieRepository movieRepository;
 
-    public ScreeningService(ScreeningRepository screeningRepository, TheaterRepository theaterRepository) {
+
+    public ScreeningService(ScreeningRepository screeningRepository, TheaterRepository theaterRepository, MovieRepository movieRepository) {
         this.screeningRepository = screeningRepository;
         this.theaterRepository = theaterRepository;
+        this.movieRepository = movieRepository;
     }
 
     public List<ScreeningDto> getAllScreenings(){
@@ -47,8 +52,9 @@ public class ScreeningService {
 
     public boolean addScreening(ScreeningDto screeningDto) {
         try {
+            Movie movieForScreening = movieRepository.findById(screeningDto.getMovieId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Movie not found"));
             Theater theaterForScreening = theaterRepository.findById(screeningDto.getTheaterName()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Theater not found"));
-            Screening newScreening = screeningDto.getScreeningEntity(screeningDto, theaterForScreening);
+            Screening newScreening = screeningDto.getScreeningEntity(screeningDto, theaterForScreening, movieForScreening);
             screeningRepository.save(newScreening);
             return true;
         } catch (Exception e) {
@@ -59,10 +65,11 @@ public class ScreeningService {
     public boolean editScreening(int screeningId, ScreeningDto screeningDto){
         try{
             Theater theaterForScreening = theaterRepository.findById(screeningDto.getTheaterName()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Theater not found"));
+            Movie movieForScreening = movieRepository.findById(screeningDto.getMovieId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Movie not found"));
             Screening screeningFound = screeningRepository.findById(screeningId)
                     .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Show not found"));
             screeningFound.setTheater(theaterForScreening);
-            screeningFound.setMovieId(screeningDto.getMovieId());
+            screeningFound.setMovie(movieForScreening);
             screeningFound.setScreeningStartTime(screeningDto.getScreeningStartTime());
             screeningFound.setPrice(screeningDto.getPrice());
             screeningRepository.save(screeningFound);

@@ -31,14 +31,16 @@ public class SetupDevData implements ApplicationRunner {
     }
     @Override
     public void run(ApplicationArguments args) throws Exception {
+        Theater t1 = new Theater(20, 12, "Lille sal");
+        Theater t2 = new Theater(25, 16, "Stor sal");
+
         Movie m1 = new Movie("Pirates", "Adventure", 13, "Johnny", 120);
         Movie m2 = new Movie("name", "genre", 10, "actor",140);
 
         movieRepository.save(m1);
         movieRepository.save(m2);
 
-        Theater t1 = new Theater(20, 12, "Lille sal");
-        Theater t2 = new Theater(25, 16, "Stor sal");
+
 
         theaterRepository.save(t1);
         theaterRepository.save(t2);
@@ -46,9 +48,9 @@ public class SetupDevData implements ApplicationRunner {
         LocalDateTime ldt1 = LocalDateTime.of(2021, 10, 10, 10, 10);
         LocalDateTime ldt2 = LocalDateTime.of(2022, 11, 11, 11, 11);
 
-        Screening s1 = new Screening(t1,m1.getId(),ldt1, 100);
-        Screening s2 = new Screening(t2,m2.getId(),ldt2, 200);
-        Screening s3 = new Screening(t2,m2.getId(),ldt2, 200);
+        Screening s1 = new Screening(t1,m1,ldt1, 100);
+        Screening s2 = new Screening(t2,m2,ldt2, 200);
+        Screening s3 = new Screening(t2,m2,ldt2, 200);
 
         screeningRepository.save(s1);
         screeningRepository.save(s2);
