@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class TheaterService
 {
@@ -17,7 +20,7 @@ public class TheaterService
         this.theaterRepository = theaterRepository;
     }
 
-    public TheaterResponse getTheater(@PathVariable int id) throws Exception{
+    public TheaterResponse getTheater(@PathVariable String id) throws Exception{
         Theater found = theaterRepository
                 .findById(id)
                 .orElseThrow(() ->
@@ -25,5 +28,9 @@ public class TheaterService
                 );
         return new TheaterResponse(found);
 
+    }
+
+    public List<TheaterResponse> getAllThearters() {
+        return theaterRepository.findAll().stream().map(theater -> new TheaterResponse(theater)).collect(Collectors.toList());
     }
 }

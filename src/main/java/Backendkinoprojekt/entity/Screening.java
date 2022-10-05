@@ -18,8 +18,8 @@ public class Screening {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-    private int theaterId;
+    @ManyToOne
+    private Theater theater;
     private int movieId;
     private LocalDateTime screeningStartTime;
 
@@ -29,8 +29,8 @@ public class Screening {
     @Column(name = "screening_id")
     private List<Ticket> tickets = new ArrayList<>();
 
-    public Screening(int theaterId, int movieId, LocalDateTime screeningStartTime, double price) {
-        this.theaterId = theaterId;
+    public Screening(Theater theater, int movieId, LocalDateTime screeningStartTime, double price) {
+        this.theater = theater;
         this.movieId = movieId;
         this.screeningStartTime = screeningStartTime;
         this.price = price;

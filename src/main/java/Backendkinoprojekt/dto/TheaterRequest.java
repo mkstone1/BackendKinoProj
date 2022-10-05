@@ -17,11 +17,13 @@ public class TheaterRequest
     int id;
     int rows;
     int seatsPrRow;
+    String name;
 
     public static Theater getTheaterEntity(TheaterRequest theaterRequest){
         return new Theater(
                 theaterRequest.getRows(),
-                theaterRequest.getSeatsPrRow()
+                theaterRequest.getSeatsPrRow(),
+                theaterRequest.getName()
         );
     }
 }

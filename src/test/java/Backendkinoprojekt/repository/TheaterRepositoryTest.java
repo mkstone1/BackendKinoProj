@@ -18,10 +18,10 @@ public class TheaterRepositoryTest
 
     @BeforeEach
     void setupBeforeEach(){
-        Theater t1 = new Theater(15,15);
-        Theater t2 = new Theater(19,15);
-        Theater t3 = new Theater(20,15);
-        Theater t4 = new Theater(35,15);
+        Theater t1 = new Theater(15,15,"sal1");
+        Theater t2 = new Theater(19,15,"sal2");
+        Theater t3 = new Theater(20,15,"sal3");
+        Theater t4 = new Theater(35,15,"sal4");
 
         theaterRepository.save(t1);
         theaterRepository.save(t2);
