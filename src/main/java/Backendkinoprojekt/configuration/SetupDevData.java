@@ -37,8 +37,8 @@ public class SetupDevData implements ApplicationRunner {
         movieRepository.save(m1);
         movieRepository.save(m2);
 
-        Theater t1 = new Theater(20, 12);
-        Theater t2 = new Theater(25, 16);
+        Theater t1 = new Theater(20, 12, "Lille sal");
+        Theater t2 = new Theater(25, 16, "Stor sal");
 
         theaterRepository.save(t1);
         theaterRepository.save(t2);
@@ -46,8 +46,8 @@ public class SetupDevData implements ApplicationRunner {
         LocalDateTime ldt1 = LocalDateTime.of(2021, 10, 10, 10, 10);
         LocalDateTime ldt2 = LocalDateTime.of(2022, 11, 11, 11, 11);
 
-        Screening s1 = new Screening(t1.getId(),m1.getId(),ldt1, 100);
-        Screening s2 = new Screening(t2.getId(),m2.getId(),ldt2, 200);
+        Screening s1 = new Screening(t1,m1.getId(),ldt1, 100);
+        Screening s2 = new Screening(t2,m2.getId(),ldt2, 200);
 
         screeningRepository.save(s1);
         screeningRepository.save(s2);

@@ -1,6 +1,7 @@
 package Backendkinoprojekt.dto;
 
 import Backendkinoprojekt.entity.Screening;
+import Backendkinoprojekt.entity.Theater;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,24 +15,25 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class ScreeningDto {
     private int id;
-    private int theaterId;
+
+    private String theaterName;
     private int movieId;
-    private String screeningStartTime;
+    private LocalDateTime screeningStartTime;
     private double price;
 
-    public static Screening getScreeningEntity(ScreeningDto s) {
+    public static Screening getScreeningEntity(ScreeningDto s , Theater theaterForScreening) {
         return new Screening(
-                s.getTheaterId(),
+                theaterForScreening,
                 s.getMovieId(),
-                LocalDateTime.parse(s.screeningStartTime),
+                s.screeningStartTime,
                 s.getPrice()
         );
     }
 
     public ScreeningDto(Screening s, boolean includeAll) {
-        this.theaterId = s.getTheaterId();
+        this.theaterName = s.getTheater().getName();
         this.movieId = s.getMovieId();
-        this.screeningStartTime = s.getScreeningStartTime().toString();
+        this.screeningStartTime = s.getScreeningStartTime();
         this.price = s.getPrice();
         if(includeAll) {
             this.id = s.getId();
@@ -39,9 +41,9 @@ public class ScreeningDto {
     }
 
     public ScreeningDto(Screening s){
-        this.theaterId = s.getTheaterId();
+        this.theaterName = s.getTheater().getName();
         this.movieId = s.getMovieId();
-        this.screeningStartTime = s.getScreeningStartTime().toString();
+        this.screeningStartTime = s.getScreeningStartTime();
         this.price = s.getPrice();
     }
 

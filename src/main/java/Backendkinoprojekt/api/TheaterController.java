@@ -4,6 +4,8 @@ import Backendkinoprojekt.dto.TheaterResponse;
 import Backendkinoprojekt.service.TheaterService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("api/theaters")
 @CrossOrigin
@@ -16,8 +18,15 @@ public class TheaterController
     }
 
     @GetMapping(path = "/{id}")
-    public TheaterResponse getTheaterById(@PathVariable int id) throws Exception{
+    public TheaterResponse getTheaterById(@PathVariable String id) throws Exception{
         TheaterResponse theaterResponse = theaterService.getTheater(id);
         return theaterResponse;
     }
+
+    @GetMapping
+    public List<TheaterResponse> getAllTheaters(){
+        return theaterService.getAllThearters();
+    }
+
+
 }
