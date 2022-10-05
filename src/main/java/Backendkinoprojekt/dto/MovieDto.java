@@ -7,6 +7,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -18,6 +21,7 @@ public class MovieDto {
     private int minAge;
     private String actors;
 
+    private List<Integer> screeningIds;
     private int runTime;
 
 
@@ -31,6 +35,7 @@ public class MovieDto {
         this.minAge = m.getMinAge();
         this.actors = m.getActors();
         this.runTime = m.getRunTime();
+        this.screeningIds = m.getScreenings().stream().map(screening -> screening.getId()).collect(Collectors.toList());
         if(includeAll){
             this.id= m.getId();
         }
