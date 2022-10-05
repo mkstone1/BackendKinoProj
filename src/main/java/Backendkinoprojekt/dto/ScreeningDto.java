@@ -16,14 +16,14 @@ public class ScreeningDto {
     private int id;
     private int theaterId;
     private int movieId;
-    private LocalDateTime screeningStartTime;
+    private String screeningStartTime;
     private double price;
 
     public static Screening getScreeningEntity(ScreeningDto s) {
         return new Screening(
                 s.getTheaterId(),
                 s.getMovieId(),
-                s.getScreeningStartTime(),
+                LocalDateTime.parse(s.screeningStartTime),
                 s.getPrice()
         );
     }
@@ -31,7 +31,7 @@ public class ScreeningDto {
     public ScreeningDto(Screening s, boolean includeAll) {
         this.theaterId = s.getTheaterId();
         this.movieId = s.getMovieId();
-        this.screeningStartTime = s.getScreeningStartTime();
+        this.screeningStartTime = s.getScreeningStartTime().toString();
         this.price = s.getPrice();
         if(includeAll) {
             this.id = s.getId();
@@ -41,7 +41,7 @@ public class ScreeningDto {
     public ScreeningDto(Screening s){
         this.theaterId = s.getTheaterId();
         this.movieId = s.getMovieId();
-        this.screeningStartTime = s.getScreeningStartTime();
+        this.screeningStartTime = s.getScreeningStartTime().toString();
         this.price = s.getPrice();
     }
 

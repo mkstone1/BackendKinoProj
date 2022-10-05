@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -57,7 +58,7 @@ public class ScreeningService {
                     .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Show not found"));
             screeningFound.setTheaterId(screeningDto.getTheaterId());
             screeningFound.setMovieId(screeningDto.getMovieId());
-            screeningFound.setScreeningStartTime(screeningDto.getScreeningStartTime());
+            screeningFound.setScreeningStartTime(LocalDateTime.parse(screeningDto.getScreeningStartTime()));
             screeningFound.setPrice(screeningDto.getPrice());
             screeningRepository.save(screeningFound);
             return true;
