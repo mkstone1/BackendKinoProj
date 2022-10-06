@@ -37,5 +37,10 @@ public class ScreeningController {
         return screeningService.editScreening(screeningId, screeningDto);
     }
 
+    @GetMapping("/today")
+    public List<ScreeningDto> getScreeningsToday(){
+        return screeningService.getAllScreeningsToday();
+    }
+
 
 }

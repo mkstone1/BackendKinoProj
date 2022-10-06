@@ -46,11 +46,13 @@ public class SetupDevData implements ApplicationRunner {
         theaterRepository.save(t2);
 
         LocalDateTime ldt1 = LocalDateTime.of(2021, 10, 10, 10, 10);
-        LocalDateTime ldt2 = LocalDateTime.of(2022, 11, 11, 11, 11);
+        LocalDateTime ldt2 = LocalDateTime.of(2022, 10, 6, 11, 45);
+        LocalDateTime ldt3 = LocalDateTime.of(2022, 10, 6, 15, 30);
+
 
         Screening s1 = new Screening(t1,m1,ldt1, 100);
-        Screening s2 = new Screening(t2,m2,ldt2, 200);
-        Screening s3 = new Screening(t2,m2,ldt2, 200);
+        Screening s2 = new Screening(t2,m1,ldt2, 200);
+        Screening s3 = new Screening(t2,m2,ldt3, 200);
 
         screeningRepository.save(s1);
         screeningRepository.save(s2);
