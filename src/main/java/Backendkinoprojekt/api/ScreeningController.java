@@ -27,6 +27,11 @@ public class ScreeningController {
         return screeningService.getScreening(id);
     }
 
+    @GetMapping("/date/{date}")
+    public List<ScreeningDto> getAllScreeningsFromDate(@PathVariable String date) throws Exception{
+        return screeningService.getAllScreeningsFromSpecificDate(date);
+    }
+
     @PostMapping()
     public boolean addScreening(@RequestBody ScreeningDto screeningDto) {
         return screeningService.addScreening(screeningDto);
