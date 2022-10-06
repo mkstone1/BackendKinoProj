@@ -25,7 +25,7 @@ public class TheaterController
 
     @GetMapping
     public List<TheaterResponse> getAllTheaters(){
-        return theaterService.getAllThearters();
+        return theaterService.getAllTheaters();
     }
 
 

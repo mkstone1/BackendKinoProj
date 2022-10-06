@@ -30,7 +30,7 @@ public class TheaterService
 
     }
 
-    public List<TheaterResponse> getAllThearters() {
+    public List<TheaterResponse> getAllTheaters() {
         return theaterRepository.findAll().stream().map(theater -> new TheaterResponse(theater)).collect(Collectors.toList());
     }
 }

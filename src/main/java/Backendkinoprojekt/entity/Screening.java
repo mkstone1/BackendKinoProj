@@ -31,6 +31,7 @@ public class Screening {
     @Column(name = "screening_id")
     private List<Ticket> tickets = new ArrayList<>();
 
+    private boolean isActive;
     public Screening(Theater theater, Movie movieId, LocalDateTime screeningStartTime, double price) {
         this.theater = theater;
         this.movie = movieId;
