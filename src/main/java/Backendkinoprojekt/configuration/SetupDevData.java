@@ -49,14 +49,20 @@ public class SetupDevData implements ApplicationRunner {
         LocalDateTime ldt2 = LocalDateTime.of(2022, 10, 6, 11, 45);
         LocalDateTime ldt3 = LocalDateTime.of(2022, 10, 6, 15, 30);
 
+        LocalDateTime ldt4 = LocalDateTime.of(2022, 10, 8, 15, 30);
+
+
 
         Screening s1 = new Screening(t1,m1,ldt1, 100);
         Screening s2 = new Screening(t2,m1,ldt2, 200);
         Screening s3 = new Screening(t2,m2,ldt3, 200);
+        Screening s4 = new Screening(t2,m2,ldt4, 200);
+
 
         screeningRepository.save(s1);
         screeningRepository.save(s2);
         screeningRepository.save(s3);
+        screeningRepository.save(s4);
 
         Ticket ticket1 = new Ticket(1, 1, s1);
         Ticket ticket2 = new Ticket(2, 3, s2);

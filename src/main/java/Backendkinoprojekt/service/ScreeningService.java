@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -88,4 +89,15 @@ public class ScreeningService {
         List<Screening> screenings = screeningRepository.findAllByScreeningStartTimeBetween(today, midnight);
         return screenings.stream().map(screening -> new ScreeningDto(screening, true)).collect(Collectors.toList());
     }
+
+    public List<ScreeningDto> getAllScreeningsFromSpecificDate(String date){
+        LocalDate dateToSearch = LocalDate.parse(date);
+        System.out.println(dateToSearch);
+        LocalDateTime start = dateToSearch.atStartOfDay();
+        LocalDateTime end = start.plusDays(1);
+
+        List<Screening> screenings = screeningRepository.findAllByScreeningStartTimeBetween(start, end);
+        return screenings.stream().map(screening -> new ScreeningDto(screening, true)).collect(Collectors.toList());
+    }
+
 }
