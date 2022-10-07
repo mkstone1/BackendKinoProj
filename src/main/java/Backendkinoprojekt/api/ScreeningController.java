@@ -32,7 +32,7 @@ public class ScreeningController {
         return screeningService.addScreening(screeningDto);
     }
 
-    @PutMapping("/{screeningId}")
+    @PatchMapping("/{screeningId}")
     public boolean editScreening(@PathVariable int screeningId, @RequestBody ScreeningDto screeningDto) throws Exception {
         return screeningService.editScreening(screeningId, screeningDto);
     }
