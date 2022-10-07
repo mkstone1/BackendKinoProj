@@ -21,6 +21,7 @@ public class TheaterResponse
     String name;
 
     public TheaterResponse(Theater theater){
+        this.id  = theater.getId();
         this.rows = theater.getRows();
         this.seatsPrRow = theater.getSeatsPrRow();
         this.name = theater.getName();

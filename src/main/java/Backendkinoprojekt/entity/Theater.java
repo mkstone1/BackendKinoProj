@@ -14,6 +14,9 @@ import java.util.List;
 public class Theater
 {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
     private String name;
 
     @Column(name = "theater_rows")

@@ -20,7 +20,7 @@ public class TheaterService
         this.theaterRepository = theaterRepository;
     }
 
-    public TheaterResponse getTheater(@PathVariable String id) throws Exception{
+    public TheaterResponse getTheater(@PathVariable int id) throws Exception{
         Theater found = theaterRepository
                 .findById(id)
                 .orElseThrow(() ->

@@ -18,7 +18,7 @@ public class TheaterController
     }
 
     @GetMapping(path = "/{id}")
-    public TheaterResponse getTheaterById(@PathVariable String id) throws Exception{
+    public TheaterResponse getTheaterById(@PathVariable int id) throws Exception{
         TheaterResponse theaterResponse = theaterService.getTheater(id);
         return theaterResponse;
     }
