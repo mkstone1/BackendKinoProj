@@ -29,7 +29,7 @@ public class TheaterRepositoryTest
         theaterRepository.save(t4);
     }
 
-    @Test
+    /*@Test
     void getTheaterById(){
         int id = 1;
         int expectedRows = 15;
@@ -40,6 +40,6 @@ public class TheaterRepositoryTest
 
         assertEquals(test.getRows() , expectedRows);
         assertEquals(test.getSeatsPrRow(), expectedSeats);
-    }
+    }*/
 
 }
