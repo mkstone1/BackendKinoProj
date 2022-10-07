@@ -45,9 +45,9 @@ public class SetupDevData implements ApplicationRunner {
         theaterRepository.save(t1);
         theaterRepository.save(t2);
 
-        LocalDateTime ldt1 = LocalDateTime.of(2021, 10, 10, 10, 10);
-        LocalDateTime ldt2 = LocalDateTime.of(2022, 10, 6, 11, 45);
-        LocalDateTime ldt3 = LocalDateTime.of(2022, 10, 6, 15, 30);
+        LocalDateTime ldt1 = LocalDateTime.of(2021, 10, 7, 18, 15);
+        LocalDateTime ldt2 = LocalDateTime.of(2022, 10, 7, 16, 45);
+        LocalDateTime ldt3 = LocalDateTime.of(2022, 10, 7, 15, 30);
 
         LocalDateTime ldt4 = LocalDateTime.of(2022, 10, 8, 15, 30);
 
