@@ -55,7 +55,7 @@ public class ScreeningService {
     public boolean addScreening(ScreeningDto screeningDto) {
         try {
             Movie movieForScreening = movieRepository.findById(screeningDto.getMovieId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Movie not found"));
-            Theater theaterForScreening = theaterRepository.findById(screeningDto.getTheaterName()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Theater not found"));
+            Theater theaterForScreening = theaterRepository.findById(screeningDto.getTheaterId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Theater not found"));
             Screening newScreening = screeningDto.getScreeningEntity(screeningDto, theaterForScreening, movieForScreening);
             screeningRepository.save(newScreening);
             return true;
@@ -66,7 +66,7 @@ public class ScreeningService {
 
     public boolean editScreening(int screeningId, ScreeningDto screeningDto){
         try{
-            Theater theaterForScreening = theaterRepository.findById(screeningDto.getTheaterName()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Theater not found"));
+            Theater theaterForScreening = theaterRepository.findById(screeningDto.getTheaterId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Theater not found"));
             Movie movieForScreening = movieRepository.findById(screeningDto.getMovieId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Movie not found"));
             Screening screeningFound = screeningRepository.findById(screeningId)
                     .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Show not found"));

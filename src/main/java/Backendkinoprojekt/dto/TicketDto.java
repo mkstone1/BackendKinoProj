@@ -13,10 +13,10 @@ public class TicketDto {
     private int id;
     private int rowNumber;
     private int seatNumber;
-    private int showId;
+    private int screeningId;
 
-    public Ticket getTicketEntity(TicketDto t, Screening show) {
-        return new Ticket(t.getRowNumber(), t.getSeatNumber(), show);
+    public Ticket getTicketEntity(TicketDto t, Screening screening) {
+        return new Ticket(t.getRowNumber(), t.getSeatNumber(), screening);
     }
 
 
@@ -24,7 +24,7 @@ public class TicketDto {
         this.id = t.getId();
         this.rowNumber = t.getRowNumber();
         this.seatNumber = t.getSeatNumber();
-        this.showId = t.getScreening().getId();
+        this.screeningId = t.getScreening().getId();
     }
 
 }

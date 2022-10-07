@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 public class ScreeningDto {
     private int id;
 
-    private String theaterName;
+    private int theaterId;
     private int movieId;
     private LocalDateTime screeningStartTime;
     private double price;
@@ -32,7 +32,7 @@ public class ScreeningDto {
     }
 
     public ScreeningDto(Screening s, boolean includeAll) {
-        this.theaterName = s.getTheater().getName();
+        this.theaterId = s.getTheater().getId();
         this.movieId = s.getMovie().getId();
         this.screeningStartTime = s.getScreeningStartTime();
         this.price = s.getPrice();
@@ -41,11 +41,5 @@ public class ScreeningDto {
         }
     }
 
-    public ScreeningDto(Screening s){
-        this.theaterName = s.getTheater().getName();
-        this.movieId = s.getMovie().getId();
-        this.screeningStartTime = s.getScreeningStartTime();
-        this.price = s.getPrice();
-    }
 
 }
