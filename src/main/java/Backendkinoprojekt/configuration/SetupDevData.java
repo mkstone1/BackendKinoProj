@@ -52,7 +52,6 @@ public class SetupDevData implements ApplicationRunner {
 
         theaterRepository.save(t1);
         theaterRepository.save(t2);
-
         LocalDateTime ldt1 = LocalDateTime.of(2022, 10, 10, 18, 15);
         LocalDateTime ldt2 = LocalDateTime.of(2022, 10, 11, 16, 45);
         LocalDateTime ldt3 = LocalDateTime.of(2022, 10, 12, 15, 30);
@@ -61,7 +60,7 @@ public class SetupDevData implements ApplicationRunner {
 
 
         Screening s1 = new Screening(t1,m1,ldt1, 100);
-        Screening s2 = new Screening(t2,m1,ldt2, 200);
+        Screening s2 = new Screening(t2,m1,ldt1, 200);
         Screening s3 = new Screening(t2,m2,ldt3, 200);
         Screening s4 = new Screening(t2,m2,ldt4, 200);
         Screening s5 = new Screening(t2,m3,ldt1, 250);
@@ -73,7 +72,7 @@ public class SetupDevData implements ApplicationRunner {
         Screening s11 = new Screening(t2,m6,ldt3, 200);
         Screening s12 = new Screening(t1,m6,ldt4, 250);
         Screening s13 = new Screening(t2,m1,ldt4, 300);
-        Screening s14 = new Screening(t2,m1,ldt2, 400);
+        Screening s14 = new Screening(t2,m1,ldt1, 400);
 
 
         screeningRepository.save(s1);

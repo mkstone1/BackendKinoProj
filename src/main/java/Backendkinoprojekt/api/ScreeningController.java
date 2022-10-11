@@ -2,7 +2,9 @@ package Backendkinoprojekt.api;
 
 import Backendkinoprojekt.dto.ScreeningDto;
 import Backendkinoprojekt.service.ScreeningService;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -33,8 +35,14 @@ public class ScreeningController {
     }
 
     @PostMapping()
-    public boolean addScreening(@RequestBody ScreeningDto screeningDto) {
-        return screeningService.addScreening(screeningDto);
+    public boolean addScreening(@RequestBody ScreeningDto screeningDto) {;
+        try {
+            return screeningService.addScreening(screeningDto);
+        }
+        catch (Exception e){
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST, e.getMessage(), e);
+        }
     }
 
     @PatchMapping("/{screeningId}")

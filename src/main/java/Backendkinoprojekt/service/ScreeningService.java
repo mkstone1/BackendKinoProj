@@ -53,12 +53,18 @@ public class ScreeningService {
     }
 
     public boolean addScreening(ScreeningDto screeningDto) {
+
         try {
             Movie movieForScreening = movieRepository.findById(screeningDto.getMovieId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Movie not found"));
             Theater theaterForScreening = theaterRepository.findById(screeningDto.getTheaterId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Theater not found"));
+            boolean isAvailable = checkAvailable(screeningDto, movieForScreening, theaterForScreening);
+            if(isAvailable){
             Screening newScreening = screeningDto.getScreeningEntity(screeningDto, theaterForScreening, movieForScreening);
             screeningRepository.save(newScreening);
-            return true;
+            return true;}
+            else {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"x");
+            }
         } catch (Exception e) {
             return false;
         }
@@ -100,4 +106,16 @@ public class ScreeningService {
         return screenings.stream().map(screening -> new ScreeningDto(screening, true)).collect(Collectors.toList());
     }
 
+
+    private boolean checkAvailable(ScreeningDto screeningDto, Movie movieForScreening, Theater theaterForScreening){
+        LocalDateTime startTime = screeningDto.getScreeningStartTime();
+        LocalDateTime endTime = screeningDto.getScreeningStartTime().plusMinutes(movieForScreening.getRunTime());
+        List<Screening> screeningsOnDay = screeningRepository.findAllByScreeningStartTimeBetweenAndTheater(startTime,endTime, theaterForScreening);
+        if(screeningsOnDay.size()<1){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 }

@@ -13,9 +13,9 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 public class Ticket {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private int id;
 
     @Column(name = "theater_row")
     private int rowNumber;
