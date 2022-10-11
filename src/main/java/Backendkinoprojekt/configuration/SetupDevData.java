@@ -94,10 +94,28 @@ public class SetupDevData implements ApplicationRunner {
 
 
         Ticket ticket1 = new Ticket(1, 1, s1);
-        Ticket ticket2 = new Ticket(2, 3, s2);
+        Ticket ticket2 = new Ticket(2, 3, s1);
+        Ticket ticket3 = new Ticket(3, 4, s1);
+        Ticket ticket4 = new Ticket(4, 5, s1);
+        Ticket ticket5 = new Ticket(5, 6, s1);
+        Ticket ticket6 = new Ticket(6, 7, s1);
+        Ticket ticket7 = new Ticket(7, 8, s1);
+        Ticket ticket8 = new Ticket(8, 9, s8);
+        Ticket ticket9 = new Ticket(9, 10, s9);
+        Ticket ticket10 = new Ticket(10, 11, s10);
+
 
         ticketRepository.save(ticket1);
         ticketRepository.save(ticket2);
+        ticketRepository.save(ticket3);
+        ticketRepository.save(ticket4);
+        ticketRepository.save(ticket5);
+        ticketRepository.save(ticket6);
+        ticketRepository.save(ticket7);
+        ticketRepository.save(ticket8);
+        ticketRepository.save(ticket9);
+        ticketRepository.save(ticket10);
+
 
 
 

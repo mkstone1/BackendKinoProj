@@ -36,4 +36,9 @@ public class TicketController {
     public boolean deleteTicket(@PathVariable int ticketId) {
         return ticketService.deleteTicket(ticketId);
     }
+
+    @GetMapping("/screening/{screeningId}")
+    public List<TicketDto> getTicketsByScreeningId(@PathVariable int screeningId) {
+        return ticketService.getTicketsByScreeningId(screeningId);
+    }
 }
