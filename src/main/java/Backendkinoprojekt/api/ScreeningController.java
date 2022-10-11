@@ -36,7 +36,7 @@ public class ScreeningController {
 
     @PostMapping()
     public boolean addScreening(@RequestBody ScreeningDto screeningDto) {
-            return screeningService.addScreening(screeningDto);
+        return screeningService.addScreening(screeningDto);
     }
 
     @PatchMapping("/{screeningId}")

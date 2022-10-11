@@ -53,8 +53,6 @@ public class ScreeningService {
     }
 
     public boolean addScreening(ScreeningDto screeningDto) {
-
-        try {
             Movie movieForScreening = movieRepository.findById(screeningDto.getMovieId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Movie not found"));
             Theater theaterForScreening = theaterRepository.findById(screeningDto.getTheaterId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Theater not found"));
             boolean isAvailable = checkAvailable(screeningDto, movieForScreening, theaterForScreening);
@@ -63,11 +61,8 @@ public class ScreeningService {
             screeningRepository.save(newScreening);
             return true;}
             else {
-                throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"x");
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Tidspunktet er allerede optaget");
             }
-        } catch (Exception e) {
-            return false;
-        }
     }
 
     public boolean editScreening(int screeningId, ScreeningDto screeningDto){
@@ -110,7 +105,9 @@ public class ScreeningService {
     private boolean checkAvailable(ScreeningDto screeningDto, Movie movieForScreening, Theater theaterForScreening){
         LocalDateTime startTime = screeningDto.getScreeningStartTime();
         LocalDateTime endTime = screeningDto.getScreeningStartTime().plusMinutes(movieForScreening.getRunTime());
-        List<Screening> screeningsOnDay = screeningRepository.findAllByScreeningStartTimeBetweenAndTheater(startTime,endTime, theaterForScreening);
+        List<Screening> screeningsOnDay = screeningRepository.findAllByTheater(theaterRepository.findById(screeningDto.getTheaterId()).orElseThrow());
+        screeningsOnDay = screeningsOnDay.stream().filter(screening -> screening.getScreeningStartTime().toLocalDate().equals(startTime.toLocalDate())).collect(Collectors.toList());
+        screeningsOnDay = screeningsOnDay.stream().filter(screening -> !screening.getEndTime().isBefore(startTime) && !screening.getScreeningStartTime().isAfter(endTime)).collect(Collectors.toList());
         if(screeningsOnDay.size()<1){
             return true;
         }

@@ -20,6 +20,8 @@ public class ScreeningDto {
     private int theaterId;
     private int movieId;
     private LocalDateTime screeningStartTime;
+
+    private LocalDateTime endTime;
     private double price;
 
     public static Screening getScreeningEntity(ScreeningDto s , Theater theaterForScreening, Movie movieForScreening) {
@@ -36,6 +38,7 @@ public class ScreeningDto {
         this.movieId = s.getMovie().getId();
         this.screeningStartTime = s.getScreeningStartTime();
         this.price = s.getPrice();
+        this.endTime = s.getEndTime();
         if(includeAll) {
             this.id = s.getId();
         }

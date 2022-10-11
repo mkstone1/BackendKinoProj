@@ -27,6 +27,8 @@ public class Screening {
 
     private double price;
 
+    private LocalDateTime endTime;
+
     @OneToMany(mappedBy = "screening", cascade = CascadeType.MERGE)
     @Column(name = "screening_id")
     private List<Ticket> tickets = new ArrayList<>();
@@ -37,6 +39,7 @@ public class Screening {
         this.movie = movieId;
         this.screeningStartTime = screeningStartTime;
         this.price = price;
+        this.endTime = screeningStartTime.plusMinutes(movieId.getRunTime()).plusMinutes(30);
     }
 
 }
