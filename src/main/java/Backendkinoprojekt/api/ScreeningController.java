@@ -35,14 +35,8 @@ public class ScreeningController {
     }
 
     @PostMapping()
-    public boolean addScreening(@RequestBody ScreeningDto screeningDto) {;
-        try {
+    public boolean addScreening(@RequestBody ScreeningDto screeningDto) {
             return screeningService.addScreening(screeningDto);
-        }
-        catch (Exception e){
-            throw new ResponseStatusException(
-                    HttpStatus.BAD_REQUEST, e.getMessage(), e);
-        }
     }
 
     @PatchMapping("/{screeningId}")
