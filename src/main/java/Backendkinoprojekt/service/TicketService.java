@@ -1,7 +1,7 @@
 package Backendkinoprojekt.service;
 
 import Backendkinoprojekt.dto.TicketDto;
-import Backendkinoprojekt.entity.Bruger;
+import Backendkinoprojekt.entity.UserWithRoles;
 import Backendkinoprojekt.entity.Screening;
 import Backendkinoprojekt.entity.Ticket;
 import Backendkinoprojekt.repository.ScreeningRepository;
@@ -40,8 +40,8 @@ public class TicketService {
     public boolean addTicket(TicketDto ticketDto) {
         try {
             Screening screeningForTicket = screeningRepository.findById(ticketDto.getScreeningId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Show not found"));
-            Bruger brugerForTicket = userRepository.findBrugerByUsername(ticketDto.getUsername());
-            Ticket ticketToBeAdded = ticketDto.getTicketEntity(ticketDto, screeningForTicket, brugerForTicket);
+            UserWithRoles userWithRolesForTicket = userRepository.findUserWithRolesByUsername(ticketDto.getUsername());
+            Ticket ticketToBeAdded = ticketDto.getTicketEntity(ticketDto, screeningForTicket, userWithRolesForTicket);
             ticketRepository.save(ticketToBeAdded);
             return true;
         } catch (Exception e) {
@@ -63,7 +63,7 @@ public class TicketService {
         return ticketRepository.findAllByScreeningId(screeningId).stream().map((ticket) -> new TicketDto(ticket)).collect(Collectors.toList());
     }
 
-    public List<TicketDto> getTicketsByBrugerUsername(String username) {
-        return ticketRepository.findALlByBrugerUsername(username).stream().map((ticket) -> new TicketDto(ticket)).collect(Collectors.toList());
+    public List<TicketDto> getTicketByUsername(String username) {
+        return ticketRepository.findALlByUserWithRolesUsername(username).stream().map((ticket) -> new TicketDto(ticket)).collect(Collectors.toList());
     }
 }

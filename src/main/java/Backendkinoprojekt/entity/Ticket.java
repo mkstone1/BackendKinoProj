@@ -27,13 +27,13 @@ public class Ticket {
     private Screening screening;
 
     @ManyToOne(cascade = CascadeType.MERGE)
-    Bruger bruger;
+    UserWithRoles userWithRoles;
 
-    public Ticket(int rowNumber, int seatNumber, Screening screening, Bruger bruger) {
+    public Ticket(int rowNumber, int seatNumber, Screening screening, UserWithRoles userWithRoles) {
         this.rowNumber = rowNumber;
         this.seatNumber = seatNumber;
         this.screening = screening;
-        this.bruger = bruger;
+        this.userWithRoles = userWithRoles;
 
     }
 }

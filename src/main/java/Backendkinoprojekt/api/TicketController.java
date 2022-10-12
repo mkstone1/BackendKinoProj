@@ -43,7 +43,7 @@ public class TicketController {
     }
 
     @GetMapping("/username/{username}")
-    public List<TicketDto> getTicketsByBrugerUsername(@PathVariable String username) {
-        return ticketService.getTicketsByBrugerUsername(username);
+    public List<TicketDto> getTicketByUsername(@PathVariable String username) {
+        return ticketService.getTicketByUsername(username);
     }
 }

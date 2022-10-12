@@ -14,7 +14,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Bruger {
+public class UserWithRoles {
 
     @Id
     private String username;
@@ -28,10 +28,10 @@ public class Bruger {
 
     private UserRoles role;
 
-    @OneToMany(mappedBy = "bruger", cascade = CascadeType.MERGE)
+    @OneToMany(mappedBy = "userWithRoles", cascade = CascadeType.MERGE)
     List<Ticket> allTickersForUser;
 
-    public Bruger(String username, String password, String firstName, String lastName, String email){
+    public UserWithRoles(String username, String password, String firstName, String lastName, String email){
         this.username = username;
         this.password = password;
         this.firstName = firstName;
