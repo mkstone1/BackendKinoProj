@@ -1,12 +1,11 @@
 package Backendkinoprojekt.api;
 
 
+import Backendkinoprojekt.dto.ScreeningDto;
+import Backendkinoprojekt.dto.UserRequest;
 import Backendkinoprojekt.dto.UserResponse;
 import Backendkinoprojekt.service.UserService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,4 +24,11 @@ public class UserController {
     public List<UserResponse> getAllUsers(){
         return userService.getAllUsers();
     }
+
+    @PostMapping("/login/{userid}")
+    public boolean checkLogin(@RequestBody UserRequest userRequest){
+        return userService.checkLogin(userRequest);
+
+    }
+
 }

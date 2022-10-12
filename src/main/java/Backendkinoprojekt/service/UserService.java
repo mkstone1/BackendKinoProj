@@ -1,5 +1,6 @@
 package Backendkinoprojekt.service;
 
+import Backendkinoprojekt.dto.UserRequest;
 import Backendkinoprojekt.dto.UserResponse;
 import Backendkinoprojekt.entity.UserWithRoles;
 import Backendkinoprojekt.repository.UserRepository;
@@ -20,5 +21,10 @@ public class UserService {
         List<UserWithRoles> allUserWithRoles = userRepository.findAll();
         List<UserResponse> allUsersResponse = allUserWithRoles.stream().map(user -> new UserResponse(user)).collect(Collectors.toList());
         return allUsersResponse;
+    }
+
+    public boolean checkLogin(UserRequest userRequest) {
+        UserWithRoles userToCheck = userRepository.findUserWithRolesByUsername(userRequest.getUserName());
+        return true;
     }
 }
