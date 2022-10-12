@@ -41,4 +41,9 @@ public class TicketController {
     public List<TicketDto> getTicketsByScreeningId(@PathVariable int screeningId) {
         return ticketService.getTicketsByScreeningId(screeningId);
     }
+
+    @GetMapping("/username/{username}")
+    public List<TicketDto> getTicketsByBrugerUsername(@PathVariable String username) {
+        return ticketService.getTicketsByBrugerUsername(username);
+    }
 }
