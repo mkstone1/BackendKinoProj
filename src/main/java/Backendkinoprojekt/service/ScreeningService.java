@@ -71,12 +71,18 @@ public class ScreeningService {
             Movie movieForScreening = movieRepository.findById(screeningDto.getMovieId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Movie not found"));
             Screening screeningFound = screeningRepository.findById(screeningId)
                     .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Show not found"));
+            boolean isAvailable = checkAvailable(screeningDto, movieForScreening, theaterForScreening);
+            if(isAvailable){
             screeningFound.setTheater(theaterForScreening);
             screeningFound.setMovie(movieForScreening);
             screeningFound.setScreeningStartTime(screeningDto.getScreeningStartTime());
             screeningFound.setPrice(screeningDto.getPrice());
             screeningRepository.save(screeningFound);
-            return true;
+            return true;}
+            else {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Tidspunktet er allerede optaget");
+            }
+
         }catch(Exception e){
             return false;
         }

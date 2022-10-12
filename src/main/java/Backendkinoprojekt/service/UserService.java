@@ -32,11 +32,11 @@ public class UserService {
                 return true;
             }
             else{
-                throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Password er ikke korrekt");
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Brugeroplysninger er ikke korrekte");
             }
         }
         else{
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Brugernavn findes ikke");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Brugeroplysninger er ikke korrekte");
         }
     }
 

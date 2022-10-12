@@ -104,6 +104,7 @@ public class SetupDevData implements ApplicationRunner {
         u6.addRole(UserRoles.ADMIN);
         u7.addRole(UserRoles.ADMIN);
 
+
         userRepository.save(u1);
         userRepository.save(u2);
         userRepository.save(u3);
