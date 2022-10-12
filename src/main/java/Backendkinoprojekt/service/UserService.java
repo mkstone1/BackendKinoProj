@@ -4,7 +4,9 @@ import Backendkinoprojekt.dto.UserRequest;
 import Backendkinoprojekt.dto.UserResponse;
 import Backendkinoprojekt.entity.UserWithRoles;
 import Backendkinoprojekt.repository.UserRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,6 +27,11 @@ public class UserService {
 
     public boolean checkLogin(UserRequest userRequest) {
         UserWithRoles userToCheck = userRepository.findUserWithRolesByUsername(userRequest.getUserName());
-        return true;
+        if (!(userToCheck == null)){
+            return true;
+        }
+        else{
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Brugernavn findes ikke");
+        }
     }
 }

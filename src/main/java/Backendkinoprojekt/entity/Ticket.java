@@ -36,4 +36,11 @@ public class Ticket {
         this.userWithRoles = userWithRoles;
 
     }
+
+    public Ticket(int rowNumber, int seatNumber, Screening screening) {
+        this.rowNumber = rowNumber;
+        this.seatNumber = seatNumber;
+        this.screening = screening;
+
+    }
 }

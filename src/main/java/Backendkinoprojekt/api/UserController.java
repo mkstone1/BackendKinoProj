@@ -1,7 +1,6 @@
 package Backendkinoprojekt.api;
 
 
-import Backendkinoprojekt.dto.ScreeningDto;
 import Backendkinoprojekt.dto.UserRequest;
 import Backendkinoprojekt.dto.UserResponse;
 import Backendkinoprojekt.service.UserService;
@@ -25,7 +24,7 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @PostMapping("/login/{userid}")
+    @PostMapping("/login")
     public boolean checkLogin(@RequestBody UserRequest userRequest){
         return userService.checkLogin(userRequest);
 
