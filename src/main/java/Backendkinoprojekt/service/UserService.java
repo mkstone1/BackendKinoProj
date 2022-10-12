@@ -34,4 +34,24 @@ public class UserService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Brugernavn findes ikke");
         }
     }
+
+    public boolean addUser(UserRequest userRequest){
+        try{
+            UserWithRoles newUser = UserRequest.getUserEntity(userRequest);
+            userRepository.save(newUser);
+            return true;
+        }
+        catch (Exception e){
+            return false;
+        }
+    }
+
+
+
+
+
+
+
+
+
 }

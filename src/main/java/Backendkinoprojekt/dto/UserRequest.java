@@ -1,5 +1,6 @@
 package Backendkinoprojekt.dto;
 
+import Backendkinoprojekt.entity.UserRoles;
 import Backendkinoprojekt.entity.UserWithRoles;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
@@ -19,8 +20,7 @@ public class UserRequest {
     private String password;
     private String firstName;
     private String lastName;
-
-
+    private UserRoles role;
 
     public static UserWithRoles getUserEntity(UserRequest u){
         return new UserWithRoles(u.userName, u.password, u.firstName, u.lastName, u.email);
@@ -32,8 +32,6 @@ public class UserRequest {
         this.userName = u.getUsername();
         this.password = u.getPassword();
         this.email = u.getEmail();
-
+        this.role = u.getRole();
     }
-
-
 }

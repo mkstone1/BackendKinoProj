@@ -4,7 +4,9 @@ package Backendkinoprojekt.api;
 import Backendkinoprojekt.dto.UserRequest;
 import Backendkinoprojekt.dto.UserResponse;
 import Backendkinoprojekt.service.UserService;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -30,4 +32,13 @@ public class UserController {
 
     }
 
+    @PostMapping()
+    public boolean addUser(@RequestBody UserRequest userRequest){
+        try{
+            return userService.addUser(userRequest);
+        }
+        catch (Exception e){
+            throw new ResponseStatusException( HttpStatus.BAD_REQUEST, e.getMessage());
+        }
+    }
 }
