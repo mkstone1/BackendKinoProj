@@ -114,13 +114,13 @@ public class SetupDevData implements ApplicationRunner {
         ticketRepository.save(ticket10);
 
 
-        User u1 = new User("username1","password1", "firstname1","lastname1", "email1");
-        User u2 = new User("username2","password1", "firstname1","lastname1", "email1");
-        User u3 = new User("username3","password1", "firstname1","lastname1", "email1");
-        User u4 = new User("username4","password1", "firstname1","lastname1", "email1");
-        User u5 = new User("username5","password1", "firstname1","lastname1", "email1");
-        User u6 = new User("username6","password1", "firstname1","lastname1", "email1");
-        User u7 = new User("username7","password1", "firstname1","lastname1", "email1");
+        Bruger u1 = new Bruger("username1","password1", "firstname1","lastname1", "email1");
+        Bruger u2 = new Bruger("username2","password1", "firstname1","lastname1", "email1");
+        Bruger u3 = new Bruger("username3","password1", "firstname1","lastname1", "email1");
+        Bruger u4 = new Bruger("username4","password1", "firstname1","lastname1", "email1");
+        Bruger u5 = new Bruger("username5","password1", "firstname1","lastname1", "email1");
+        Bruger u6 = new Bruger("username6","password1", "firstname1","lastname1", "email1");
+        Bruger u7 = new Bruger("username7","password1", "firstname1","lastname1", "email1");
 
         u1.addRole(UserRoles.USER);
         u2.addRole(UserRoles.USER);
@@ -131,6 +131,7 @@ public class SetupDevData implements ApplicationRunner {
         u7.addRole(UserRoles.ADMIN);
 
 
+        userRepository.save(u1);
 
 
 

@@ -1,6 +1,6 @@
 package Backendkinoprojekt.dto;
 
-import Backendkinoprojekt.entity.User;
+import Backendkinoprojekt.entity.Bruger;
 
 public class UserResponse {
 
@@ -11,7 +11,7 @@ public class UserResponse {
 
 
 
-    public UserResponse(User u){
+    public UserResponse(Bruger u){
         this.firstName = u.getFirstName();
         this.lastName = u.getLastName();
         this.userName = u.getUsername();

@@ -27,7 +27,7 @@ public class Ticket {
     private Screening screening;
 
     @ManyToOne(cascade = CascadeType.MERGE)
-    User user;
+    Bruger bruger;
 
     public Ticket(int rowNumber, int seatNumber, Screening screening) {
         this.rowNumber = rowNumber;

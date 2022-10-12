@@ -1,6 +1,6 @@
 package Backendkinoprojekt.dto;
 
-import Backendkinoprojekt.entity.User;
+import Backendkinoprojekt.entity.Bruger;
 
 public class UserRequest {
 
@@ -12,11 +12,11 @@ public class UserRequest {
 
 
 
-    public static User getUserEntity(UserRequest u){
-        return new User(u.userName, u.password, u.firstName, u.lastName, u.email);
+    public static Bruger getUserEntity(UserRequest u){
+        return new Bruger(u.userName, u.password, u.firstName, u.lastName, u.email);
     }
 
-    public UserRequest(User u){
+    public UserRequest(Bruger u){
         this.firstName = u.getFirstName();
         this.lastName = u.getLastName();
         this.userName = u.getUsername();

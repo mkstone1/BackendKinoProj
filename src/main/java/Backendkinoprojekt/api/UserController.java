@@ -4,6 +4,7 @@ package Backendkinoprojekt.api;
 import Backendkinoprojekt.dto.UserResponse;
 import Backendkinoprojekt.service.UserService;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,7 +21,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @RequestMapping()
+    @GetMapping()
     public List<UserResponse> getAllUsers(){
         return userService.getAllUsers();
     }

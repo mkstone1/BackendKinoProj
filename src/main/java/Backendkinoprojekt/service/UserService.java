@@ -1,7 +1,7 @@
 package Backendkinoprojekt.service;
 
 import Backendkinoprojekt.dto.UserResponse;
-import Backendkinoprojekt.entity.User;
+import Backendkinoprojekt.entity.Bruger;
 import Backendkinoprojekt.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
@@ -17,8 +17,8 @@ public class UserService {
         this.userRepository = userRepository;
     }
     public List<UserResponse> getAllUsers() {
-        List<User> allUsers= userRepository.findAll();
-        List<UserResponse> allUsersResponse = allUsers.stream().map(user -> new UserResponse(user)).collect(Collectors.toList());
+        List<Bruger> allBrugers = userRepository.findAll();
+        List<UserResponse> allUsersResponse = allBrugers.stream().map(user -> new UserResponse(user)).collect(Collectors.toList());
         return allUsersResponse;
     }
 }
