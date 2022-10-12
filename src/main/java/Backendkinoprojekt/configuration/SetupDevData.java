@@ -1,13 +1,7 @@
 package Backendkinoprojekt.configuration;
 
-import Backendkinoprojekt.entity.Movie;
-import Backendkinoprojekt.entity.Screening;
-import Backendkinoprojekt.entity.Theater;
-import Backendkinoprojekt.entity.Ticket;
-import Backendkinoprojekt.repository.MovieRepository;
-import Backendkinoprojekt.repository.ScreeningRepository;
-import Backendkinoprojekt.repository.TheaterRepository;
-import Backendkinoprojekt.repository.TicketRepository;
+import Backendkinoprojekt.entity.*;
+import Backendkinoprojekt.repository.*;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Controller;
@@ -23,11 +17,14 @@ public class SetupDevData implements ApplicationRunner {
     TicketRepository ticketRepository;
     ScreeningRepository screeningRepository;
 
-    public SetupDevData(MovieRepository movieRepository, TheaterRepository theaterRepository, TicketRepository ticketRepository, ScreeningRepository screeningRepository) {
+    UserRepository userRepository;
+
+    public SetupDevData(MovieRepository movieRepository, TheaterRepository theaterRepository, TicketRepository ticketRepository, ScreeningRepository screeningRepository,    UserRepository userRepository) {
         this.movieRepository = movieRepository;
         this.theaterRepository = theaterRepository;
         this.ticketRepository = ticketRepository;
         this.screeningRepository = screeningRepository;
+        this.userRepository = userRepository;
     }
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -117,6 +114,21 @@ public class SetupDevData implements ApplicationRunner {
         ticketRepository.save(ticket10);
 
 
+        User u1 = new User("username1","password1", "firstname1","lastname1", "email1");
+        User u2 = new User("username2","password1", "firstname1","lastname1", "email1");
+        User u3 = new User("username3","password1", "firstname1","lastname1", "email1");
+        User u4 = new User("username4","password1", "firstname1","lastname1", "email1");
+        User u5 = new User("username5","password1", "firstname1","lastname1", "email1");
+        User u6 = new User("username6","password1", "firstname1","lastname1", "email1");
+        User u7 = new User("username7","password1", "firstname1","lastname1", "email1");
+
+        u1.addRole(UserRoles.USER);
+        u2.addRole(UserRoles.USER);
+        u3.addRole(UserRoles.USER);
+        u4.addRole(UserRoles.USER);
+        u5.addRole(UserRoles.ADMIN);
+        u6.addRole(UserRoles.ADMIN);
+        u7.addRole(UserRoles.ADMIN);
 
 
 

@@ -1,6 +1,5 @@
 package Backendkinoprojekt.entity;
 
-import Backendkinoprojekt.dto.TicketDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -26,6 +25,9 @@ public class Ticket {
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "screening_id")
     private Screening screening;
+
+    @ManyToOne(cascade = CascadeType.MERGE)
+    User user;
 
     public Ticket(int rowNumber, int seatNumber, Screening screening) {
         this.rowNumber = rowNumber;
