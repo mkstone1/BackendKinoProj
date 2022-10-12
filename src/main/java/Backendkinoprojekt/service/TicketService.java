@@ -52,4 +52,8 @@ public class TicketService {
             return false;
         }
     }
+
+    public List<TicketDto> getTicketsByScreeningId(int screeningId) {
+        return ticketRepository.findAllByScreeningId(screeningId).stream().map((ticket) -> new TicketDto(ticket)).collect(Collectors.toList());
+    }
 }
