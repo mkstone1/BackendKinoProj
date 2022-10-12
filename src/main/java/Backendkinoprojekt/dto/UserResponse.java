@@ -14,7 +14,7 @@ public class UserResponse {
     public UserResponse(User u){
         this.firstName = u.getFirstName();
         this.lastName = u.getLastName();
-        this.userName = u.getUserName();
+        this.userName = u.getUsername();
         this.email = u.getEmail();
     }
 }

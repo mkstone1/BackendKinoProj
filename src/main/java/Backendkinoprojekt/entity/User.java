@@ -17,7 +17,7 @@ import java.util.List;
 public class User {
 
     @Id
-    private String userName;
+    private String username;
 
     private String password;
     private String firstName;
@@ -31,8 +31,8 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.MERGE)
     List<Ticket> allTickersForUser;
 
-    public User(String userName, String password, String firstName, String lastName, String email){
-        this.userName = userName;
+    public User(String username, String password, String firstName, String lastName, String email){
+        this.username = username;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;

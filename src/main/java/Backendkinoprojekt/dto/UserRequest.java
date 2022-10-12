@@ -19,7 +19,7 @@ public class UserRequest {
     public UserRequest(User u){
         this.firstName = u.getFirstName();
         this.lastName = u.getLastName();
-        this.userName = u.getUserName();
+        this.userName = u.getUsername();
         this.password = u.getPassword();
         this.email = u.getEmail();
 
