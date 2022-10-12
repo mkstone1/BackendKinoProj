@@ -1,5 +1,6 @@
 package Backendkinoprojekt.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -37,7 +38,9 @@ public class UserWithRoles {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.role = UserRoles.USER;
     }
+
 
     public void addRole(UserRoles role){
         this.role = role;

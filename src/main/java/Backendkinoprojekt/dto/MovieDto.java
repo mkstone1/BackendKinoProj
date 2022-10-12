@@ -20,10 +20,8 @@ public class MovieDto {
     private String genre;
     private int minAge;
     private String actors;
-
     private List<Integer> screeningIds;
     private int runTime;
-
 
     public static Movie getMovieEntity(MovieDto m){
         return new Movie(m.getName(), m.getGenre(), m.getMinAge(), m.getActors(),m.getRunTime());

@@ -27,4 +27,24 @@ public class UserService {
         UserWithRoles userToCheck = userRepository.findUserWithRolesByUsername(userRequest.getUserName());
         return true;
     }
+
+    public boolean addUser(UserRequest userRequest){
+        try{
+            UserWithRoles newUser = UserRequest.getUserEntity(userRequest);
+            userRepository.save(newUser);
+            return true;
+        }
+        catch (Exception e){
+            return false;
+        }
+    }
+
+
+
+
+
+
+
+
+
 }
