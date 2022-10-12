@@ -1,5 +1,6 @@
 package Backendkinoprojekt.dto;
 
+import Backendkinoprojekt.entity.Bruger;
 import Backendkinoprojekt.entity.Screening;
 import Backendkinoprojekt.entity.Ticket;
 import lombok.Getter;
@@ -15,8 +16,10 @@ public class TicketDto {
     private int seatNumber;
     private int screeningId;
 
-    public Ticket getTicketEntity(TicketDto t, Screening screening) {
-        return new Ticket(t.getRowNumber(), t.getSeatNumber(), screening);
+    private String username;
+
+    public Ticket getTicketEntity(TicketDto t, Screening screening, Bruger bruger) {
+        return new Ticket(t.getRowNumber(), t.getSeatNumber(), screening, bruger);
     }
 
 
@@ -25,6 +28,7 @@ public class TicketDto {
         this.rowNumber = t.getRowNumber();
         this.seatNumber = t.getSeatNumber();
         this.screeningId = t.getScreening().getId();
+        this.username = t.getBruger().getUsername();
     }
 
 }

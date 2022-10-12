@@ -29,9 +29,11 @@ public class Ticket {
     @ManyToOne(cascade = CascadeType.MERGE)
     Bruger bruger;
 
-    public Ticket(int rowNumber, int seatNumber, Screening screening) {
+    public Ticket(int rowNumber, int seatNumber, Screening screening, Bruger bruger) {
         this.rowNumber = rowNumber;
         this.seatNumber = seatNumber;
         this.screening = screening;
+        this.bruger = bruger;
+
     }
 }
