@@ -14,7 +14,7 @@ import lombok.Setter;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserResponse {
 
-    private String userName;
+    private String username;
     private String email;
     private String firstName;
     private String lastName;
@@ -24,7 +24,7 @@ public class UserResponse {
     public UserResponse(UserWithRoles u){
         this.firstName = u.getFirstName();
         this.lastName = u.getLastName();
-        this.userName = u.getUsername();
+        this.username = u.getUsername();
         this.email = u.getEmail();
     }
 }

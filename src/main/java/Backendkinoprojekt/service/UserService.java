@@ -26,9 +26,14 @@ public class UserService {
     }
 
     public boolean checkLogin(UserRequest userRequest) {
-        UserWithRoles userToCheck = userRepository.findUserWithRolesByUsername(userRequest.getUserName());
+        UserWithRoles userToCheck = userRepository.findUserWithRolesByUsername(userRequest.getUsername());
         if (!(userToCheck == null)){
-            return true;
+            if(userToCheck.getPassword().equals(userRequest.getPassword())){
+                return true;
+            }
+            else{
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Password er ikke korrekt");
+            }
         }
         else{
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Brugernavn findes ikke");

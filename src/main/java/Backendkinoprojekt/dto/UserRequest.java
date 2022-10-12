@@ -15,7 +15,7 @@ import lombok.Setter;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserRequest {
 
-    private String userName;
+    private String username;
     private String email;
     private String password;
     private String firstName;
@@ -23,13 +23,13 @@ public class UserRequest {
     private UserRoles role;
 
     public static UserWithRoles getUserEntity(UserRequest u){
-        return new UserWithRoles(u.userName, u.password, u.firstName, u.lastName, u.email);
+        return new UserWithRoles(u.username, u.password, u.firstName, u.lastName, u.email);
     }
 
     public UserRequest(UserWithRoles u){
         this.firstName = u.getFirstName();
         this.lastName = u.getLastName();
-        this.userName = u.getUsername();
+        this.username = u.getUsername();
         this.password = u.getPassword();
         this.email = u.getEmail();
         this.role = u.getRole();
