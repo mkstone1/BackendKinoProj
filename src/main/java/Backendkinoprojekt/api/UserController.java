@@ -26,6 +26,8 @@ public class UserController {
         return userService.getAllUsers();
     }
 
+
+
     @PostMapping("/login")
     public boolean checkLogin(@RequestBody UserRequest userRequest){
         return userService.checkLogin(userRequest);
@@ -40,5 +42,10 @@ public class UserController {
         catch (Exception e){
             throw new ResponseStatusException( HttpStatus.BAD_REQUEST, e.getMessage());
         }
+    }
+
+    @GetMapping("/{username}")
+    public UserResponse getUserByUsername(@PathVariable String username){
+        return userService.getUserByUsername(username);
     }
 }

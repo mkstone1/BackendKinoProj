@@ -51,6 +51,11 @@ public class UserService {
         }
     }
 
+    public UserResponse getUserByUsername(String username){
+        UserWithRoles user = userRepository.findUserWithRolesByUsername(username);
+        return new UserResponse(user);
+    }
+
 
 
 
