@@ -28,3 +28,4 @@ Vi har på vores bedste vis forsøgt at følge en professionel tilgang under pro
 
 Derudover har det været lærerigt, at gøre brug af de forskellige ting vi har lært i programmering & teknik, i praksis.
 # **Link til video**
+https://drive.google.com/drive/folders/19A6H6Y-ZJN-UBxC8ZCDy0qWTNvTu7EW_?usp=sharing
