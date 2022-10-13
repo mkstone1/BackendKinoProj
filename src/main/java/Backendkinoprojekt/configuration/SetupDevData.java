@@ -108,6 +108,9 @@ public class SetupDevData implements ApplicationRunner {
         userRepository.save(u1);
         userRepository.save(u2);
         userRepository.save(u3);
+        userRepository.save(u4);
+        userRepository.save(u5);
+        userRepository.save(u6);
 
 
 
