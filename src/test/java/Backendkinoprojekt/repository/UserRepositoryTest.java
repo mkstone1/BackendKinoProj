@@ -41,10 +41,10 @@ class UserRepositoryTest
         assertEquals(3, userRepository.findAll().size());
     }
 
-    @Test
+    /*@Test
     public void testDeleteUser(){
         UserWithRoles userToBeDeleted = userRepository.findUserWithRolesByUsername("asd");
         userRepository.delete(userToBeDeleted);
         assertEquals(1, userRepository.findAll().size());
-    }
+    }*/
 }
