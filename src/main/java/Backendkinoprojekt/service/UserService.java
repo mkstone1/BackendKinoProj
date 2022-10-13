@@ -41,14 +41,15 @@ public class UserService {
     }
 
     public boolean addUser(UserRequest userRequest){
-        try{
             UserWithRoles newUser = UserRequest.getUserEntity(userRequest);
-            userRepository.save(newUser);
-            return true;
-        }
-        catch (Exception e){
-            return false;
-        }
+            UserWithRoles userInDB = userRepository.findUserWithRolesByUsername(newUser.getUsername());
+            if(userInDB == null){
+                newUser = userRepository.save(newUser);
+                return true;
+            }
+            else{
+                return false;
+            }
     }
 
     public UserResponse getUserByUsername(String username){

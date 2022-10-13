@@ -116,6 +116,7 @@ public class SetupDevData implements ApplicationRunner {
 
 
 
+
         Ticket ticket1 = new Ticket(1, 1, s1, u1);
         Ticket ticket2 = new Ticket(2, 3, s1, u1);
         Ticket ticket3 = new Ticket(3, 4, s1, u1);

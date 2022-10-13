@@ -31,4 +31,5 @@ public class TicketDto {
         this.username = t.getUserWithRoles().getUsername();
     }
 
+
 }
