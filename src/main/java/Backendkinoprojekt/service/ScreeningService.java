@@ -66,23 +66,33 @@ public class ScreeningService {
     }
 
     public boolean editScreening(int screeningId, ScreeningDto screeningDto){
-
             Theater theaterForScreening = theaterRepository.findById(screeningDto.getTheaterId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Theater not found"));
             Movie movieForScreening = movieRepository.findById(screeningDto.getMovieId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Movie not found"));
             Screening screeningFound = screeningRepository.findById(screeningId)
                     .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Show not found"));
+
+            if(!screeningDto.getScreeningStartTime().equals(screeningFound.getScreeningStartTime())){
             boolean isAvailable = checkAvailable(screeningDto, movieForScreening, theaterForScreening);
             if(isAvailable){
-            screeningFound.setTheater(theaterForScreening);
-            screeningFound.setMovie(movieForScreening);
-            screeningFound.setScreeningStartTime(screeningDto.getScreeningStartTime());
-            screeningFound.setPrice(screeningDto.getPrice());
-            screeningRepository.save(screeningFound);
-            return true;}
-            else {
+                screeningFound.setTheater(theaterForScreening);
+                screeningFound.setMovie(movieForScreening);
+                screeningFound.setScreeningStartTime(screeningDto.getScreeningStartTime());
+                screeningFound.setPrice(screeningDto.getPrice());
+                screeningRepository.save(screeningFound);
+                return true;}
+            else{
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Tidspunktet er allerede optaget");
             }
+            }
+            else{
 
+                screeningFound.setTheater(theaterForScreening);
+                screeningFound.setMovie(movieForScreening);
+                screeningFound.setScreeningStartTime(screeningDto.getScreeningStartTime());
+                screeningFound.setPrice(screeningDto.getPrice());
+                screeningRepository.save(screeningFound);
+                return true;
+            }
     }
 
     public List<ScreeningDto> getAllScreeningsToday(){
