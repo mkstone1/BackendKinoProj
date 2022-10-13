@@ -18,7 +18,7 @@ Jeg har mest været med til at lave hvordan man søger efter en film og hvodan m
 **Oliver:**
 Jeg har primært kigget på forestillinger og reservation af billetter. Jeg har også lavet brugerens side, til at kunne få en oversigt over hvilke billetter, de har reserveret. Derudover sletning af reservationer
 
-**Mark:**
+**Mark:**Movie(backend) Ticket(backend), edit + create Screenings(frontend), search, view and create movie (frontend), login (frontend) 
 
 **Kristian:** Movie(**backend**) Ticket(**backend**), Screenings(**frontend**), Reservations(**frontend**)
 
